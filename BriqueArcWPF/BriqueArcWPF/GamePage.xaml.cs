@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace BriqueArcWPF
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour GamePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GamePage : Page
     {
-        public MainWindow()
+        public GamePage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Play_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new GamePage();
-        }
-
-        private void Button_Ranking_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new RankingPage();
         }
     }
 }

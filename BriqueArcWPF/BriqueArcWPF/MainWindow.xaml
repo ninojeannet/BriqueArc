@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="Play" Click="Button_Play_Click"/>
+        <Button Grid.Row="1" Content="Ranking" Click="Button_Ranking_Click"/>
+        <Frame x:Name="Main"/>
     </Grid>
 </Window>
