@@ -11,7 +11,7 @@ namespace BriqueArcASP.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public List<Ranking> Rankings { get; set; }
+        public virtual ICollection<Ranking> Rankings { get; set; }
 
     }
 }

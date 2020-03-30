@@ -50,34 +50,34 @@ namespace BriqueArcASP.Models
                     Password = "admin",
                 };
 
+                context.Users.AddRange(u1, u2, u3);
+
+                context.SaveChanges();
+
                 Ranking r1 = new Ranking
                 {
                     Date = DateTime.Today,
                     Score = 100,
-                    User = u1,
-                    UserId = u1.UserId
+                    UserId = context.Users.Single(s => s.Username == "nino").UserId
                 };
 
                 Ranking r2 = new Ranking
                 {
                     Date = DateTime.Today,
                     Score = 10,
-                    User = u2,
-                    UserId = u2.UserId
+                    UserId = context.Users.Single(s => s.Username == "yohann").UserId
                 };
                 Ranking r3 = new Ranking
                 {
                     Date = DateTime.Today,
                     Score = 50,
-                    User = u3,
-                    UserId = u3.UserId
+                    UserId = context.Users.Single(s => s.Username == "kevin").UserId
                 };
-               
-              
 
-                context.Users.AddRange(u1, u2, u3);
+
+
+
                 context.Rankings.AddRange(r1, r2, r3);
-
                 context.SaveChanges();
             }
         }

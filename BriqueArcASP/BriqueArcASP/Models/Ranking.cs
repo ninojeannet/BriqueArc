@@ -13,8 +13,6 @@ namespace BriqueArcASP.Models
         public DateTime Date { get; set; }
 
         public long UserId { get; set; }
-
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        public virtual User User { get; set; }
     }
 }
