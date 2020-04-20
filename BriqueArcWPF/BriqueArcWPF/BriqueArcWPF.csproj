@@ -55,10 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="RankingPage.xaml.cs">
-      <DependentUpon>RankingPage.xaml</DependentUpon>
-    </Compile>
-    <Page Include="GamePage.xaml">
+    <Page Include="Game\Game.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -70,17 +67,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GamePage.xaml.cs">
-      <DependentUpon>GamePage.xaml</DependentUpon>
+    <Compile Include="Game\Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game\Models\Ball.cs" />
+    <Compile Include="Game\Models\Bar.cs" />
+    <Compile Include="Game\Models\Brick.cs" />
+    <Compile Include="Game\Views\Ball.cs" />
+    <Compile Include="Game\Views\Bar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RankingPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -107,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Game\ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
