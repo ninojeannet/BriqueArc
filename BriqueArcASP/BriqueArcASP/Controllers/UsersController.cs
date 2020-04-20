@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BriqueArcASP.Models;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace BriqueArcASP.Controllers
 {
@@ -79,6 +81,11 @@ namespace BriqueArcASP.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            var md5 = new MD5CryptoServiceProvider();
+
+            //return as base64 string
+            user.Password =  Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes(user.Password)));
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

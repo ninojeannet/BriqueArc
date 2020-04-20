@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BriqueArcASP.Models
@@ -33,21 +35,25 @@ namespace BriqueArcASP.Models
                     //Modifier ici
                 }
 
+                var md5 = new MD5CryptoServiceProvider();
+
+                //return as base64 string
+
                 User u1 = new User
                 {
                     Username = "nino",
-                    Password = "admin",
+                    Password = Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes("admin"))),
                 };
 
                 User u2 = new User
                 {
                     Username = "yohann",
-                    Password = "admin",
+                    Password = Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes("admin"))),
                 };
                 User u3 = new User
                 {
                     Username = "kevin",
-                    Password = "admin",
+                    Password = Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes("admin"))),
                 };
 
                 context.Users.AddRange(u1, u2, u3);
