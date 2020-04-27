@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BriqueArcWPF.Game.Models
 {
-    class Brick
+    class Brick : GameObject
     {
         private int life;
 
-        public Brick(int life = 1)
+        public Brick(int life = 1) : base("Brick")
         {
             this.life = life;
         }

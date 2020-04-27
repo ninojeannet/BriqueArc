@@ -67,14 +67,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Game\BrickCreator.cs" />
+    <Compile Include="Game\CollisionManager.cs" />
     <Compile Include="Game\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Models\Ball.cs" />
     <Compile Include="Game\Models\Bar.cs" />
     <Compile Include="Game\Models\Brick.cs" />
+    <Compile Include="Game\Models\GameObject.cs" />
     <Compile Include="Game\Views\Ball.cs" />
     <Compile Include="Game\Views\Bar.cs" />
+    <Compile Include="Game\Views\Brick.cs" />
+    <Compile Include="Game\Views\GameObject.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -8,19 +8,11 @@ using System.Windows.Documents;
 namespace BriqueArcWPF.Game.Models
 {
 
-    class Bar
+    class Bar : GameObject
     {
-        private int position;
-
-        public Bar()
+        public Bar() : base("Bar")
         {
-            position = 0;
-        }
 
-        public int Position
-        {
-            get { return position; }
-            set { position = value; }
         }
     }
 }

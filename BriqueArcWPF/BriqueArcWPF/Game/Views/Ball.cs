@@ -8,36 +8,14 @@ using System.Windows.Controls;
 
 namespace BriqueArcWPF.Game.Views
 {
-    class Ball : Button
+    class Ball : GameObject
     {
         Models.Ball model;
 
-        public Ball()
+        public Ball() : base(new Models.Ball())
         {
-            model = new Models.Ball();
-
-            this.Width = 10;
-            this.Height = 10;
-        }
-
-        public Vector Direction
-        {
-            get { return model.Direction; }
-            set { model.Direction = value; }
-        }
-
-        public Vector Position
-        {
-            get { return model.Position; }
-            set { model.Position = value; }
-        }
-
-
-        public void Refresh()
-        {
-            Position += Direction;
-            Canvas.SetLeft(this, Position.X);
-            Canvas.SetTop(this, Position.Y);
+            model = (Models.Ball) base.model;
+            this.SetSize(5, 5);
         }
     }
 }

@@ -7,29 +7,13 @@ using System.Windows;
 
 namespace BriqueArcWPF.Game.Models
 {
-    class Ball
+    class Ball : GameObject
     {
         private int attack;
-        private Vector direction;
-        private Vector position;
 
-        public Ball()
+        public Ball() : base("Ball")
         {
             attack = 1;
-            direction = new Vector(0, 0);
-            position = new Vector(0, 0);
-        }
-
-        public Vector Direction
-        {
-            get { return direction; }
-            set { direction = value; }
-        }
-
-        public Vector Position
-        {
-            get { return position; }
-            set { position = value; }
         }
 
         public int Attack

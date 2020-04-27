@@ -1,29 +1,19 @@
 ﻿
+using System;
+using System.Net.Http.Headers;
 using System.Windows.Controls;
 using BriqueArcWPF.Game.Models;
 
 namespace BriqueArcWPF.Game.Views
 {
-    class Bar : Button
+    class Bar : GameObject
     {
         private Models.Bar model;
 
-        public Bar()
+        public Bar() : base(new Models.Bar())
         {
-            model = new Models.Bar();
-            this.Width = 100;
-            this.Height = 20;
-        }
-
-        public int Position
-        {
-            get { return model.Position; }
-            set { model.Position = value; }
-        }
-
-        public void Refresh()
-        {
-            Canvas.SetLeft(this, model.Position);
+            model = (Models.Bar) base.model;
+            base.SetSize(100, 20);
         }
     }
 }

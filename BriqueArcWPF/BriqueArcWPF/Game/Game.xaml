@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:BriqueArcWPF.Game.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" KeyDown="UserControl_KeyDown" Loaded="UserControl_Loaded" KeyUp="UserControl_KeyUp">
-    <Canvas Name="canvas">
+    <Canvas Name="canvas" SizeChanged="canvas_SizeChanged">
         <local:Bar x:Name="bar" Canvas.Left="0" Canvas.Top="0"/>
         <local:Ball x:Name="ball"/>
     </Canvas>
