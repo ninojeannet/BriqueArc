@@ -23,8 +23,9 @@ namespace BriqueArcWPF
         private void Login(object sender, RoutedEventArgs e)
         {
            
-            User currentUser = new User(username.Text, Tools.Encrypt(password.Text));
-            if (API.APIHandler.UserExists(currentUser))
+            User currentUser = API.APIHandler.GetUser(username.Text, Tools.Encrypt(password.Text));
+
+            if (currentUser != null)
             {
                 Console.WriteLine("login valid");
             }
@@ -32,6 +33,14 @@ namespace BriqueArcWPF
             {
                 Console.WriteLine("login failed");
             }
+            API.APIHandler.FetchRankings();
+
+            //User tmp = new User("test", "test");
+            //API.APIHandler.StoreUser(tmp);
+
+            //king tmp = new Ranking(10, 44, null);
+            //API.APIHandler.StoreRanking(tmp);
+
         }
 
         private void Register(object sender, RoutedEventArgs e)

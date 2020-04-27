@@ -8,7 +8,7 @@
         Title="login_window" Height="450" Width="800">
     <Grid>
         <TextBox Name="username" HorizontalAlignment="Left" Height="23" Margin="254,121,0,0" TextWrapping="Wrap"  Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="password" HorizontalAlignment="Left" Height="23" Margin="254,206,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="password" HorizontalAlignment="Left" Height="23" Margin="254,206,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button Click="Login" Name="signin" Content="Sign In" HorizontalAlignment="Left" Margin="254,298,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Click="Register" Name="register" Content="Register" HorizontalAlignment="Left" Margin="401,317,0,0" VerticalAlignment="Top" Width="75"/>
 

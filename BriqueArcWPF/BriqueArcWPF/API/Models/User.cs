@@ -41,7 +41,12 @@ namespace BriqueArcWPF.API.Models
 
         public override string ToString()
         {
-            return this.username;
+            return "[id=" + userId + "; username=" + username + "; pwd=" + password + "; rankings=" + rankings + "]";
+        }
+
+        public string ToJSONFormat()
+        {
+            return "{\"username\":\"" + username + "\", \"password\" :\"" + password + "\" }";
         }
     }
 }
