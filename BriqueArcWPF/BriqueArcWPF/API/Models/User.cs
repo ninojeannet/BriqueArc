@@ -29,6 +29,16 @@ namespace BriqueArcWPF.API.Models
             this.rankings = rankings;
         }
 
+        public string getUsername()
+        {
+            return username;
+        }
+
+        public string getPassword()
+        {
+            return password;
+        }
+
         public override string ToString()
         {
             return this.username;

@@ -4,6 +4,7 @@ using BriqueArcWPF.API;
 
 using System;
 using System.Windows;
+using BriqueArcWPF.APIHandler;
 
 namespace BriqueArcWPF
 {
@@ -22,7 +23,7 @@ namespace BriqueArcWPF
         private void Login(object sender, RoutedEventArgs e)
         {
            
-            User currentUser = new User(username.Text, password.Text);
+            User currentUser = new User(username.Text, Tools.Encrypt(password.Text));
             if (API.APIHandler.UserExists(currentUser))
             {
                 Console.WriteLine("login valid");
