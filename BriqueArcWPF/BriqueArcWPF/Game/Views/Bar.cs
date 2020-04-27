@@ -13,7 +13,7 @@ namespace BriqueArcWPF.Game.Views
         public Bar() : base(new Models.Bar())
         {
             model = (Models.Bar) base.model;
-            base.SetSize(100, 20);
+            base.SetSize(100, 10);
         }
     }
 }

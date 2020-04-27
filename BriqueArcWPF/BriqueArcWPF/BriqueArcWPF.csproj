@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Game\Game.xaml">
+    <Page Include="Game\BriqueArc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,18 +68,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\BrickCreator.cs" />
-    <Compile Include="Game\CollisionManager.cs" />
-    <Compile Include="Game\Game.xaml.cs">
-      <DependentUpon>Game.xaml</DependentUpon>
+    <Compile Include="Game\State\EndState.cs" />
+    <Compile Include="Game\Utils\BrickCreator.cs" />
+    <Compile Include="Game\Utils\CollisionManager.cs" />
+    <Compile Include="Game\BriqueArc.xaml.cs">
+      <DependentUpon>BriqueArc.xaml</DependentUpon>
     </Compile>
     <Compile Include="Game\Models\Ball.cs" />
     <Compile Include="Game\Models\Bar.cs" />
     <Compile Include="Game\Models\Brick.cs" />
+    <Compile Include="Game\Models\Game.cs" />
     <Compile Include="Game\Models\GameObject.cs" />
+    <Compile Include="Game\State\GameState_I.cs" />
+    <Compile Include="Game\State\PlayState.cs" />
+    <Compile Include="Game\State\StartState.cs" />
     <Compile Include="Game\Views\Ball.cs" />
     <Compile Include="Game\Views\Bar.cs" />
     <Compile Include="Game\Views\Brick.cs" />
+    <Compile Include="Game\Views\Game.cs" />
     <Compile Include="Game\Views\GameObject.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -102,6 +109,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -113,6 +121,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Game\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Ressources\background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ressources\LeftArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ressources\UpArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ressources\RightArrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
