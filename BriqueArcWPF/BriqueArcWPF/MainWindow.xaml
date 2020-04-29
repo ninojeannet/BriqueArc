@@ -3,55 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BriqueArcWPF.Game.Views"
+        xmlns:local="clr-namespace:BriqueArcWPF.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Window.Background>
-        <ImageBrush ImageSource="Ressources\background.jpg"/>
-    </Window.Background>
-    <Grid>
-        <Grid.Background>
-            <ImageBrush/>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Background="{x:Null}" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Showcard Gothic">ScoreBoard</Label>
-            <ListBox Background="{x:Null}" Foreground="White" FontFamily="Showcard Gothic">
-                <ListBoxItem>YHN : 100pts</ListBoxItem>
-                <ListBoxItem>LEO: 100pts</ListBoxItem>
-                <ListBoxItem>SCA : 100pts</ListBoxItem>
-            </ListBox>
-            <Label Foreground="White" FontFamily="Showcard Gothic">Score : 200pts</Label>
-            <Label Foreground="White" FontSize="20" HorizontalAlignment="Center" FontFamily="Showcard Gothic" Margin="0,20,0,0">Comment Jouer ?</Label>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Image Source="Ressources/UpArrow.png" Grid.Row="0" Grid.Column="0"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center">Lancer la bille</TextBlock>
-                <Image Source="Ressources/LeftArrow.png" Grid.Row="1" Grid.Column="0"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center">Déplacer à gauche</TextBlock>
-                <Image Source="Ressources/RightArrow.png" Grid.Row="2" Grid.Column="0"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center">Déplacer à droite</TextBlock>
-
-            </Grid>
-        </StackPanel>
-
-
-        <local:Game x:Name="game" Focusable="True" Grid.Column="1" Grid.Row="0" Background="Black"/>
-    </Grid>
+        Title="BriqueArc" Height="450" Width="800">
+    
+    <Grid x:Name="grid" />
 </Window>
