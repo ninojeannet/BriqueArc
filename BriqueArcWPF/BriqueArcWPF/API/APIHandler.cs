@@ -5,63 +5,57 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace BriqueArcWPF.API
 {
     class APIHandler
     {
-        private static string urlUser = "https://briquearcasp.azurewebsites.net/api/users";
-        private static string urlRanking = "https://briquearcasp.azurewebsites.net/api/rankings";
-          
-        public static List<User> FetchUsers()
-        {
-            HttpWebRequest request = null;
+        //private static string urlUser = "https://briquearcasp.azurewebsites.net/api/users";
+        //private static string urlRanking = "https://briquearcasp.azurewebsites.net/api/rankings";
 
-            Uri uri = new Uri(urlUser);
-            request = (HttpWebRequest)WebRequest.Create(uri);
-            request.Method = "GET";
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream receiveStream = response.GetResponseStream();
+        private static string urlUser = "https://localhost:44384/api/users";
+        private static string urlRanking = "https://localhost:44384/api/rankings";
 
-            // Pipes the stream to a higher level stream reader with the required encoding format. 
-            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(readStream.ReadToEnd());
-            foreach (User u in users)
-            {
-                Console.WriteLine(u);
-            }
-            return users;
-        }
-
-        public static User GetUser(string username, string password)
-        {
-            HttpWebRequest request = null;
-
-            Uri uri = new Uri(urlUser);
-            request = (HttpWebRequest)WebRequest.Create(uri);
+        private static Stream Send(String uriString)
+        { 
+            Uri uri = new Uri(uriString);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.Method = "GET";
             HttpWebResponse response = (HttpWebResponse) request.GetResponse();
-            Stream receiveStream = response.GetResponseStream();
+            return response.GetResponseStream();
+        }
 
-            // Pipes the stream to a higher level stream reader with the required encoding format. 
-            StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-            List<User> users = JsonConvert.DeserializeObject<List<User>>(readStream.ReadToEnd());
-            foreach(User u in users)
-            {
-                
-                if (u.getUsername() == username)
-                {
-                    if(u.getPassword() == password)
-                    {
+        private static String Encode(String str)
+        {
+            ASCIIEncoding encoder = new ASCIIEncoding();
+            SHA256Managed hash = new SHA256Managed();
+            byte[] data = hash.ComputeHash(encoder.GetBytes(str));
 
-                        Console.WriteLine(u);
-                        return u;
-                    }
-                }
-            }
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+                builder.Append(data[i].ToString("x2"));
+            return builder.ToString();
+        }
 
-            return null;
+        public static bool UsernameAlreadyExists(String username)
+        {
+            Stream receivedStream = Send(urlUser + "/exists/" + username);
+            StreamReader streamReader = new StreamReader(receivedStream, Encoding.UTF8);
+            return JsonConvert.DeserializeObject<bool>(streamReader.ReadToEnd());
+        }
+
+        public static bool ConnectUser(String username, String password)
+        {
+            Stream receivedStream = Send(urlUser + "/connect/" + username + "/" + Encode(password));
+            StreamReader streamReader = new StreamReader(receivedStream, Encoding.UTF8);
+            return JsonConvert.DeserializeObject<bool>(streamReader.ReadToEnd());
+        }
+
+        public static void RegisterUser(String username, String password)
+        {
+            Send(urlUser + "/register/" + username + "/" + Encode(password));
         }
 
         public static List<Ranking> FetchRankings()

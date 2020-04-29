@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BriqueArcWPF.UserControls
 {
@@ -29,24 +17,42 @@ namespace BriqueArcWPF.UserControls
         {
             if (CheckPasswords() && CheckUsername())
             {
-                
+                API.APIHandler.RegisterUser(username.Text, password.Password);
+                SetLoginControl();
+                error.Visibility = Visibility.Hidden;
             }
         }
 
         private bool CheckPasswords()
         {
-            if (password.Password == verification.Password)
-                return true;
 
-            error.Text = "Les mots de passes ne correspondent pas";
-            error.Visibility = Visibility.Visible;
-            return false;
+            if (password.Password != verification.Password)
+            {
+                error.Text = "Les mots de passes ne correspondent pas";
+                error.Visibility = Visibility.Visible;
+                return false;
+            }
+
+            if(password.Password == "")
+            {
+                error.Text = "Les mots de passes ne peuvent pas être vides !";
+                error.Visibility = Visibility.Visible;
+                return false;
+            }
+             
+            return true;
+
+            
         }
 
         private bool CheckUsername()
         {
-            User currentUser = API.APIHandler.GetUser(username.Text, Tools.Encrypt(password.Password));
-            return true;
+            if (!API.APIHandler.UsernameAlreadyExists(username.Text))
+                return true;
+
+            error.Text = "Le nom de compte existe déjà !";
+            error.Visibility = Visibility.Visible;
+            return false;
         }
 
         private void SetLoginControl()

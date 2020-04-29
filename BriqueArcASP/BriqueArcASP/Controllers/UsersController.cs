@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BriqueArcASP.Models;
 using System.Text;
 using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace BriqueArcASP.Controllers
 {
@@ -27,6 +28,28 @@ namespace BriqueArcASP.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
+        }
+
+        [HttpGet("exists/{username}")]
+        public async Task<ActionResult<bool>> UsernameAlreadyExist(String username)
+        {
+            return await _context.Users.Where(s => s.Username == username).CountAsync() > 0;
+        }
+
+        [HttpGet("connect/{username}/{password}")]
+        public async Task<ActionResult<bool>> ConnectUser(String username, String password)
+        {
+            return await _context.Users.Where(s => s.Username == username && s.Password == password).CountAsync() > 0;
+        }
+
+        [HttpGet("register/{username}/{password}")]
+        public async void RegisterUser(String username, String password)
+        {
+            User user = new User();
+            user.Username = username;
+            user.Password = password;
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
         }
 
         // GET: api/Users/5

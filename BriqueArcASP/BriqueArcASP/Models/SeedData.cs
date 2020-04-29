@@ -42,18 +42,18 @@ namespace BriqueArcASP.Models
                 User u1 = new User
                 {
                     Username = "nino",
-                    Password = Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes("admin"))),
+                    Password = "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1",
                 };
 
                 User u2 = new User
                 {
                     Username = "yohann",
-                    Password = Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes("admin"))),
+                    Password = "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1",
                 };
                 User u3 = new User
                 {
                     Username = "kevin",
-                    Password = Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes("admin"))),
+                    Password = "d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1",
                 };
 
                 context.Users.AddRange(u1, u2, u3);

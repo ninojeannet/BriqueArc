@@ -1,4 +1,5 @@
-﻿using BriqueArcWPF.API.Models;
+﻿using BriqueArcWPF.API;
+using BriqueArcWPF.API.Models;
 using BriqueArcWPF.APIHandler;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +18,7 @@ namespace BriqueArcWPF.UserControls
 
         private void Login()
         {
-            User currentUser = API.APIHandler.GetUser(username.Text, Tools.Encrypt(password.Password));
-
-            if (currentUser != null)
+            if (API.APIHandler.ConnectUser(username.Text, password.Password))
             {
                 MainWindow mainWindow = (MainWindow) Window.GetWindow(this);
                 mainWindow.SetControl(MainWindow.Controls.Game);
