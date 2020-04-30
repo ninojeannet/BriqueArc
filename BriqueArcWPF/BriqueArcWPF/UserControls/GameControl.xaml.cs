@@ -31,13 +31,22 @@ namespace BriqueArcWPF.UserControls
         {
             game.Model.PropertyChanged += new PropertyChangedEventHandler(Game_PropertyChanged);
 
-            foreach (Ranking ranking in API.APIHandler.GetScoreboard())
-                scoreboard.Items.Add(ranking.User.getUsername() + " : " + ranking.Score + "pts");
+            UpdateScoreboard();
         }
 
         private void Game_PropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             score.Content = "Score : " + game.Model.Points + "pts";
+
+            if(game.Model.Points == 0)
+                UpdateScoreboard();
+        }
+
+        private void UpdateScoreboard()
+        {
+            scoreboard.Items.Clear();
+            foreach (Ranking ranking in API.APIHandler.GetScoreboard())
+                scoreboard.Items.Add(ranking.User.getUsername() + " : " + ranking.Score + "pts");
         }
     }
 }

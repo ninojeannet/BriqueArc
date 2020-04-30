@@ -30,6 +30,11 @@ namespace BriqueArcWPF.API.Models
             this.user = user;
         }
 
+        public int UserID
+        {
+            get { return userId; }
+        }
+
         public int Score
         {
             get { return score; }
@@ -38,6 +43,7 @@ namespace BriqueArcWPF.API.Models
         public User User
         {
             get { return user; }
+            set { user = value; }
         }
 
         public override string ToString()

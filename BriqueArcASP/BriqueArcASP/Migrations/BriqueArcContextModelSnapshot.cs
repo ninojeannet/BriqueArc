@@ -14,13 +14,13 @@ namespace BriqueArcASP.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("BriqueArcASP.Models.Ranking", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("RankingId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -28,19 +28,17 @@ namespace BriqueArcASP.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
-                    b.Property<long>("UserId")
+                    b.Property<long>("UserID")
                         .HasColumnType("bigint");
 
                     b.HasKey("RankingId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Rankings");
                 });
 
             modelBuilder.Entity("BriqueArcASP.Models.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -54,15 +52,6 @@ namespace BriqueArcASP.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("BriqueArcASP.Models.Ranking", b =>
-                {
-                    b.HasOne("BriqueArcASP.Models.User", "User")
-                        .WithMany("Rankings")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

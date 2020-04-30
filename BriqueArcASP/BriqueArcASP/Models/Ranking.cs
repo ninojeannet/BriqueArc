@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -13,7 +14,5 @@ namespace BriqueArcASP.Models
         public int Score { get; set; }
 
         public long UserID { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

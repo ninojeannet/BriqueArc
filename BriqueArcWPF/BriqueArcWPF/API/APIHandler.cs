@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -52,7 +53,7 @@ namespace BriqueArcWPF.API
         {
             Stream receivedStream = Send(urlUser + "/connect/" + username + "/" + Encode(password));
             StreamReader streamReader = new StreamReader(receivedStream, Encoding.UTF8);
-            return JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
+            return  JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
         public static void RegisterUser(String username, String password)
@@ -64,7 +65,25 @@ namespace BriqueArcWPF.API
         {
             Stream receivedStream = Send(urlRanking + "/scoreboard");
             StreamReader streamReader = new StreamReader(receivedStream, Encoding.UTF8);
-            return JsonConvert.DeserializeObject<IEnumerable<Ranking>>(streamReader.ReadToEnd()).ToList();
+            List<Ranking> rankings = JsonConvert.DeserializeObject<IEnumerable<Ranking>>(streamReader.ReadToEnd()).ToList();
+
+            Dictionary<int, User> users = new Dictionary<int, User>();
+            foreach (Ranking ranking in rankings)
+            {
+                if (!users.ContainsKey(ranking.UserID))
+                    users.Add(ranking.UserID, APIHandler.GetUser(ranking.UserID));
+
+                ranking.User = users[ranking.UserID];
+            }
+
+            return rankings;
+        }
+
+        private static User GetUser(int id)
+        {
+            Stream receivedStream = Send(urlUser + "/" + id);
+            StreamReader streamReader = new StreamReader(receivedStream, Encoding.UTF8);
+            return JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
         public static void AddRanking(int userId, int score)
