@@ -31,7 +31,7 @@ namespace BriqueArcWPF.Game.State
         {
             bar.Update();
 
-            CollisionManager.CheckBarBorderCollision(bar, context.Size.Width, context.Size.Height);
+            CollisionManager.CheckBarBorderCollision(context);
 
             context.Ball.SetPosition(bar.Position.X + bar.Size.Width / 2 - ball.Size.Width / 2, bar.Position.Y - ball.Size.Height);
 

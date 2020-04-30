@@ -7,30 +7,35 @@ namespace BriqueArcWPF.Game.Utils
 {
     class CollisionManager
     {
-        public static void CheckBarBorderCollision(Bar bar, double width, double height)
+        public static void CheckBarBorderCollision(Models.Game game)
         {
+            Bar bar = game.Bar;
             if (bar.Position.X < 0)
             {
                 bar.SetPosition(0, bar.Position.Y);
                 bar.SetDirection(0, 0);
             }
-            else if (bar.Position.X + bar.Size.Width > width)
+            else if (bar.Position.X + bar.Size.Width > game.Size.Width)
             {
-                bar.SetPosition(width - bar.Size.Width, bar.Position.Y);
+                bar.SetPosition(game.Size.Width - bar.Size.Width, bar.Position.Y);
                 bar.SetDirection(0, 0);
             }
         }
 
-        public static void CheckBallBorderCollision(Ball ball, double width, double height)
+        public static void CheckBallBorderCollision(Models.Game game)
         {
+            Ball ball = game.Ball;
             if (ball.Position.Y <= 0)
                 ball.SetDirection(ball.Direction.X, ball.Direction.Y * -1);
-            if (ball.Position.X + ball.Size.Width >= width || ball.Position.X <= 0)
+            if (ball.Position.X + ball.Size.Width >= game.Size.Width || ball.Position.X <= 0)
                 ball.SetDirection(ball.Direction.X * -1, ball.Direction.Y);
         }
 
-        public static void CheckBallBarCollision(Ball ball, Bar bar)
+        public static void CheckBallBarCollision(Models.Game game)
         {
+            Ball ball = game.Ball;
+            Bar bar = game.Bar;
+
             if (ball.Position.Y + ball.Size.Height >= bar.Position.Y && ball.Position.X <= bar.Position.X + bar.Size.Width && ball.Position.X + ball.Size.Width >= bar.Position.X && ball.Position.Y <= bar.Position.Y + bar.Size.Height)
             {
                 double height = (bar.Position.Y + bar.Size.Height / 2) - (ball.Position.Y + ball.Size.Height / 2);
@@ -43,8 +48,11 @@ namespace BriqueArcWPF.Game.Utils
             }
         }
 
-        public static void CheckBallBricksCollision(Ball ball, List<Brick> bricks)
+        public static void CheckBallBricksCollision(Models.Game game)
         {
+            Ball ball = game.Ball;
+            List<Brick> bricks = game.Bricks;
+
             for (int i = 0; i < bricks.Count; i++)
             {
                 Brick brick = bricks[i];
@@ -61,16 +69,17 @@ namespace BriqueArcWPF.Game.Utils
                         ball.SetDirection(ball.Direction.X * -1, ball.Direction.Y);
 
                     bricks.Remove(brick);
+                    game.Points += 100;
                 }
             }
         }
 
-        public static void CheckAllCollision(Bar bar, Ball ball, List<Brick> bricks, double width, double height)
+        public static void CheckAllCollision(Models.Game game)
         {
-            CheckBallBarCollision(ball, bar);
-            CheckBallBorderCollision(ball, width, height);
-            CheckBallBricksCollision(ball, bricks);
-            CheckBarBorderCollision(bar, width, height);
+            CheckBallBarCollision(game);
+            CheckBallBorderCollision(game);
+            CheckBallBricksCollision(game);
+            CheckBarBorderCollision(game);
         }
     }
 }

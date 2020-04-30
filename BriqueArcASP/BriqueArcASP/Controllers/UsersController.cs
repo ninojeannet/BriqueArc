@@ -37,9 +37,9 @@ namespace BriqueArcASP.Controllers
         }
 
         [HttpGet("connect/{username}/{password}")]
-        public async Task<ActionResult<bool>> ConnectUser(String username, String password)
+        public async Task<ActionResult<User>> ConnectUser(String username, String password)
         {
-            return await _context.Users.Where(s => s.Username == username && s.Password == password).CountAsync() > 0;
+            return await _context.Users.Where(s => s.Username == username && s.Password == password).FirstOrDefaultAsync();
         }
 
         [HttpGet("register/{username}/{password}")]

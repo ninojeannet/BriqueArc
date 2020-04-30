@@ -18,8 +18,10 @@ namespace BriqueArcWPF.UserControls
 
         private void Login()
         {
-            if (API.APIHandler.ConnectUser(username.Text, password.Password))
+            User user = API.APIHandler.ConnectUser(username.Text, password.Password);
+            if (user != null)
             {
+                AuthenticatedUser.GetInstance().SetUser(user);
                 MainWindow mainWindow = (MainWindow) Window.GetWindow(this);
                 mainWindow.SetControl(MainWindow.Controls.Game);
                 error.Visibility = Visibility.Hidden;

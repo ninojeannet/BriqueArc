@@ -4,9 +4,11 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows;
 
 namespace BriqueArcWPF.API
 {
@@ -46,16 +48,28 @@ namespace BriqueArcWPF.API
             return JsonConvert.DeserializeObject<bool>(streamReader.ReadToEnd());
         }
 
-        public static bool ConnectUser(String username, String password)
+        public static User ConnectUser(String username, String password)
         {
             Stream receivedStream = Send(urlUser + "/connect/" + username + "/" + Encode(password));
             StreamReader streamReader = new StreamReader(receivedStream, Encoding.UTF8);
-            return JsonConvert.DeserializeObject<bool>(streamReader.ReadToEnd());
+            return JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
         public static void RegisterUser(String username, String password)
         {
             Send(urlUser + "/register/" + username + "/" + Encode(password));
+        }
+
+        public static List<Ranking> GetScoreboard()
+        {
+            Stream receivedStream = Send(urlRanking + "/scoreboard");
+            StreamReader streamReader = new StreamReader(receivedStream, Encoding.UTF8);
+            return JsonConvert.DeserializeObject<IEnumerable<Ranking>>(streamReader.ReadToEnd()).ToList();
+        }
+
+        public static void AddRanking(int userId, int score)
+        {
+            Send(urlRanking + "/add/" + userId + "/" + score);
         }
 
         public static List<Ranking> FetchRankings()

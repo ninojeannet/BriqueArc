@@ -20,6 +20,12 @@ namespace BriqueArcASP.Controllers
             _context = context;
         }
 
+        [HttpGet("scoreboard")]
+        public async Task<ActionResult<IEnumerable<Ranking>>> GetFirsts()
+        {
+            return await _context.Rankings.OrderByDescending(r => r.Score).ToListAsync();
+        }
+
         // GET: api/Rankings
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ranking>>> GetRankings()
@@ -32,7 +38,6 @@ namespace BriqueArcASP.Controllers
         public async Task<ActionResult<Ranking>> GetRanking(long id)
         {
             var ranking = await _context.Rankings.FindAsync(id);
-
             if (ranking == null)
             {
                 return NotFound();

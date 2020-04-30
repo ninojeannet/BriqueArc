@@ -20,7 +20,7 @@ namespace BriqueArcASP.Migrations
 
             modelBuilder.Entity("BriqueArcASP.Models.Ranking", b =>
                 {
-                    b.Property<long>("RankingId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -40,7 +40,7 @@ namespace BriqueArcASP.Migrations
 
             modelBuilder.Entity("BriqueArcASP.Models.User", b =>
                 {
-                    b.Property<long>("UserId")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -60,7 +60,7 @@ namespace BriqueArcASP.Migrations
                 {
                     b.HasOne("BriqueArcASP.Models.User", "User")
                         .WithMany("Rankings")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

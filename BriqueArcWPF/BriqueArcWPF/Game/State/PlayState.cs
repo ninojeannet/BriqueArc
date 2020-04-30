@@ -46,7 +46,7 @@ namespace BriqueArcWPF.Game.State
             ball.Update();
             bar.Update();
 
-            CollisionManager.CheckAllCollision(bar, ball, bricks, context.Size.Width, context.Size.Height);
+            CollisionManager.CheckAllCollision(context);
 
             if (ball.Position.Y + ball.Size.Height >= context.Size.Height)
                 context.State = new EndState(context);

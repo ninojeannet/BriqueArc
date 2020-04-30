@@ -1,5 +1,7 @@
-﻿using System;
+﻿using BriqueArcWPF.API.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,19 @@ namespace BriqueArcWPF.UserControls
         public GameControl()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            game.Model.PropertyChanged += new PropertyChangedEventHandler(Game_PropertyChanged);
+
+            foreach (Ranking ranking in API.APIHandler.GetScoreboard())
+                scoreboard.Items.Add(ranking.User.getUsername() + " : " + ranking.Score + "pts");
+        }
+
+        private void Game_PropertyChanged(object sender, PropertyChangedEventArgs args)
+        {
+            score.Content = "Score : " + game.Model.Points + "pts";
         }
     }
 }

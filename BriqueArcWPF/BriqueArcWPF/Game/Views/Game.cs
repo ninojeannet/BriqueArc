@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,10 +43,16 @@ namespace BriqueArcWPF.Game.Views
             Children.Clear();
             Children.Add(model.Ball);
             Children.Add(model.Bar);
+
             foreach(Brick brick in model.Bricks)
             {
                 Children.Add(brick);
             }
+        }
+
+        public Models.Game Model
+        {
+            get { return model; }
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs args)

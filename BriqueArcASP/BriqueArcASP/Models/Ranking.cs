@@ -9,10 +9,11 @@ namespace BriqueArcASP.Models
     public class Ranking
     {
         public long RankingId { get; set; }
-        public int Score { get; set; }
-        //public DateTime Date { get; set; }
 
-        public long UserId { get; set; }
+        public int Score { get; set; }
+
+        public long UserID { get; set; }
+
         public virtual User User { get; set; }
     }
 }

@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="API\AuthenticatedUser.cs" />
     <Compile Include="UserControls\GameControl.xaml.cs">
       <DependentUpon>GameControl.xaml</DependentUpon>
     </Compile>
@@ -73,10 +74,6 @@
     <Compile Include="UserControls\RegisterControl.xaml.cs">
       <DependentUpon>RegisterControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Game\BriqueArc.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,9 +89,6 @@
     <Compile Include="Game\State\EndState.cs" />
     <Compile Include="Game\Utils\BrickCreator.cs" />
     <Compile Include="Game\Utils\CollisionManager.cs" />
-    <Compile Include="Game\BriqueArc.xaml.cs">
-      <DependentUpon>BriqueArc.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Game\Models\Ball.cs" />
     <Compile Include="Game\Models\Bar.cs" />
     <Compile Include="Game\Models\Brick.cs" />
@@ -153,9 +147,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Game\ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Ressources\background.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

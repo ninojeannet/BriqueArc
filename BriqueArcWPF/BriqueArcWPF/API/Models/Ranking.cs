@@ -30,14 +30,14 @@ namespace BriqueArcWPF.API.Models
             this.user = user;
         }
 
-        public int GetScore()
+        public int Score
         {
-            return score;
+            get { return score; }
         }
 
-        public int getUserId()
+        public User User
         {
-            return userId;
+            get { return user; }
         }
 
         public override string ToString()

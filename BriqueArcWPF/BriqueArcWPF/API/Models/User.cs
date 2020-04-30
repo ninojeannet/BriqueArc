@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,6 +14,8 @@ namespace BriqueArcWPF.API.Models
         private string username;
         private string password;
         private ICollection<Ranking> rankings;
+
+        public User() { }
 
         public User(string username, string password)
         {
@@ -27,6 +30,11 @@ namespace BriqueArcWPF.API.Models
             this.username = username;
             this.password = password;
             this.rankings = rankings;
+        }
+
+        public int getId()
+        {
+            return userId;
         }
 
         public string getUsername()

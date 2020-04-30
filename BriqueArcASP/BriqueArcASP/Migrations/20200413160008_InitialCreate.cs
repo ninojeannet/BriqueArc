@@ -27,23 +27,23 @@ namespace BriqueArcASP.Migrations
                     RankingId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Score = table.Column<int>(nullable: false),
-                    UserId = table.Column<long>(nullable: false)
+                    UserID = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Rankings", x => x.RankingId);
                     table.ForeignKey(
                         name: "FK_Rankings_Users_UserId",
-                        column: x => x.UserId,
+                        column: x => x.UserID,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rankings_UserId",
                 table: "Rankings",
-                column: "UserId");
+                column: "UserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

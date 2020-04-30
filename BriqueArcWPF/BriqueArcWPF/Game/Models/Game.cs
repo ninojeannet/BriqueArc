@@ -1,6 +1,7 @@
 ﻿using BriqueArcWPF.Game.State;
 using BriqueArcWPF.Game.Views;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ namespace BriqueArcWPF.Game.Models
         private Views.Bar bar;
         private List<Views.Brick> bricks;
         private GameState_I state;
+        private int points;
 
         public Game()
         {
@@ -21,6 +23,17 @@ namespace BriqueArcWPF.Game.Models
             ball = new Views.Ball();
             bar = new Views.Bar();
             state = new StartState(this);
+            points = 0;
+        }
+
+        public int Points
+        {
+            get { return points; }
+            set 
+            {
+                points = value;
+                OnPropertyChanged("Points");
+            }
         }
 
         public Views.Ball Ball
@@ -108,6 +121,12 @@ namespace BriqueArcWPF.Game.Models
             bar.Refresh();
 
             size = new Size(width, height);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

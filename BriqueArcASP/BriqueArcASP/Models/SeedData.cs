@@ -62,26 +62,22 @@ namespace BriqueArcASP.Models
 
                 Ranking r1 = new Ranking
                 {
-                    //Date = DateTime.Today,
                     Score = 100,
-                    UserId = context.Users.Single(s => s.Username == "nino").UserId
+                    UserID = u1.UserId
                 };
 
                 Ranking r2 = new Ranking
                 {
                     //Date = DateTime.Today,
                     Score = 10,
-                    UserId = context.Users.Single(s => s.Username == "yohann").UserId
+                    UserID = u2.UserId
                 };
                 Ranking r3 = new Ranking
                 {
                     //Date = DateTime.Today,
                     Score = 50,
-                    UserId = context.Users.Single(s => s.Username == "kevin").UserId
+                    UserID = u3.UserId
                 };
-
-
-
 
                 context.Rankings.AddRange(r1, r2, r3);
                 context.SaveChanges();
