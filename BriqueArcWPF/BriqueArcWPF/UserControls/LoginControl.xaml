@@ -9,21 +9,28 @@
     <UserControl.Background>
         <ImageBrush ImageSource="..\Ressources\background.jpg" />
     </UserControl.Background>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Dictionaries/StringDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <StackPanel VerticalAlignment="Center">
-        <Label FontFamily="Showcard Gothic" Foreground="White" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,30">Connexion</Label>
+        <Label FontFamily="Showcard Gothic" Foreground="White" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,30" Content="{StaticResource connection}" />
 
 
-        <TextBlock Name="error" Foreground="Red" HorizontalAlignment="Center" Visibility="Hidden">Le couple nom de compte et mot de passe ne correspond pas !</TextBlock>
+        <TextBlock Name="error" Foreground="Red" HorizontalAlignment="Center" Visibility="Hidden" Text="{StaticResource wrongCredentials}" />
         <StackPanel HorizontalAlignment="Center" Width="250">
-            
-            <Label Foreground="White">Nom de compte :</Label>
+
+            <Label Foreground="White" Content="{StaticResource username}" />
             <TextBox Name="username"/>
 
-            <Label Foreground="White">Mot de passe :</Label>
+            <Label Foreground="White" Content="{StaticResource password}" />
             <PasswordBox Name="password"/>
 
-            <Button x:Name="loginButton" Margin="0,20,0,0" Click="loginButton_Click">Connexion</Button>
-            <Button x:Name="registerButton" Margin="0,5,0,0" Click="registerButton_Click">S'enregistrer</Button>
+            <Button x:Name="loginButton" Margin="0,20,0,0" Click="loginButton_Click" Content="{StaticResource connection}" />
+            <Button x:Name="registerButton" Margin="0,5,0,0" Click="registerButton_Click" Content="{StaticResource register}" />
         </StackPanel>
     </StackPanel>
 </UserControl>

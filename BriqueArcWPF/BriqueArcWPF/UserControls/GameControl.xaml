@@ -9,6 +9,13 @@
     <UserControl.Background>
         <ImageBrush ImageSource="..\Ressources\background.jpg"/>
     </UserControl.Background>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Dictionaries/StringDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.Background>
             <ImageBrush/>
@@ -23,11 +30,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Showcard Gothic">ScoreBoard</Label>
+            <Label Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Showcard Gothic" Content="{StaticResource scoreboard}" />
             <ListBox x:Name="scoreboard" Height="100" Background="{x:Null}" Foreground="White" FontFamily="Showcard Gothic" />
 
             <Label Foreground="White" FontFamily="Showcard Gothic" Name="score">Score : 0pts</Label>
-            <Label Foreground="White" FontSize="20" HorizontalAlignment="Center" FontFamily="Showcard Gothic" Margin="0,20,0,0">Comment Jouer ?</Label>
+            <Label Foreground="White" FontSize="20" HorizontalAlignment="Center" FontFamily="Showcard Gothic" Margin="0,20,0,0" Content="{StaticResource howToPlay}" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
@@ -39,14 +46,13 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Image Source="..\Ressources/UpArrow.png" Grid.Row="0" Grid.Column="0"/>
-                <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center">Lancer la bille</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center" Text="{StaticResource throwBall}" />
                 <Image Source="..\Ressources/LeftArrow.png" Grid.Row="1" Grid.Column="0"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center">Déplacer à gauche</TextBlock>
-                <Image Source="..\Ressources/RightArrow.png" Grid.Row="2" Grid.Column="0"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center">Déplacer à droite</TextBlock>
-
+                <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center" Text="{StaticResource moveLeft}" />             <Image Source="..\Ressources/RightArrow.png" Grid.Row="2" Grid.Column="0"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center" Text="{StaticResource moveRight}" />
             </Grid>
         </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
         <views:Game x:Name="game" Focusable="True" Grid.Column="1" Grid.Row="0" Background="Black"/>
     </Grid>
 </UserControl>

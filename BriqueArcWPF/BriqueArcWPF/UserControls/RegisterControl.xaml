@@ -9,22 +9,29 @@
     <UserControl.Background>
         <ImageBrush ImageSource="..\Ressources\background.jpg" />
     </UserControl.Background>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Dictionaries/StringDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <StackPanel VerticalAlignment="Center">
-        <Label FontFamily="Showcard Gothic" Foreground="White" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,30">Enregistrement</Label>
+        <Label FontFamily="Showcard Gothic" Foreground="White" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,30" Content="{StaticResource register}" />
 
         <TextBlock Name="error" Foreground="Red" HorizontalAlignment="Center" Visibility="Hidden" />
         <StackPanel HorizontalAlignment="Center" Width="250">
-            <Label Foreground="White">Nom de compte :</Label>
+            <Label Foreground="White" Content="{StaticResource username}" />
             <TextBox Name="username"/>
 
-            <Label Foreground="White">Mot de passe :</Label>
+            <Label Foreground="White" Content="{StaticResource password}" />
             <PasswordBox Name="password"/>
 
-            <Label Foreground="White">Vérification du mot de passe:</Label>
+            <Label Foreground="White" Content="{StaticResource verification}" />
             <PasswordBox Name="verification"/>
 
-            <Button x:Name="registerButton" Margin="0,20,0,0" Click="registerButton_Click">S'enregistrer</Button>
-            <Button x:Name="backButton" Margin="0,5,0,0" Click="backButton_Click">Retour</Button>
+            <Button x:Name="registerButton" Margin="0,20,0,0" Click="registerButton_Click" Content="{StaticResource register}" />
+            <Button x:Name="backButton" Margin="0,5,0,0" Click="backButton_Click" Content="{StaticResource back}" />
         </StackPanel>
     </StackPanel>
 </UserControl>

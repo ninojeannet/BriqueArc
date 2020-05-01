@@ -1,8 +1,10 @@
-﻿using BriqueArcWPF.API.Models;
+﻿using BriqueArcWPF.API;
+using BriqueArcWPF.API.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;

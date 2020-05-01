@@ -15,11 +15,11 @@ namespace BriqueArcWPF.API
 {
     class APIHandler
     {
-        //private static string urlUser = "https://briquearcasp.azurewebsites.net/api/users";
-        //private static string urlRanking = "https://briquearcasp.azurewebsites.net/api/rankings";
+        private static string urlUser = "https://briquearcasp.azurewebsites.net/api/users";
+        private static string urlRanking = "https://briquearcasp.azurewebsites.net/api/rankings";
 
-        private static string urlUser = "https://localhost:44384/api/users";
-        private static string urlRanking = "https://localhost:44384/api/rankings";
+        //private static string urlUser = "https://localhost:44384/api/users";
+        //private static string urlRanking = "https://localhost:44384/api/rankings";
 
         private static Stream Send(String uriString)
         { 
