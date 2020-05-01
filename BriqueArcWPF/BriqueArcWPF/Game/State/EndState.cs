@@ -1,4 +1,5 @@
 ﻿using BriqueArcWPF.API;
+using BriqueArcWPF.API.Models;
 using BriqueArcWPF.Game.Utils;
 using System.Net.Security;
 using System.Windows.Forms;
@@ -17,7 +18,11 @@ namespace BriqueArcWPF.Game.State
             DialogResult result = MessageBox.Show("Voulez-vous enregistrer votre score ?\nScore : " + context.Points, "Perdu !", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
-                API.APIHandler.AddRanking(AuthenticatedUser.GetInstance().Id, context.Points);
+            {
+                Ranking ranking = new Ranking(context.Points, AuthenticatedUser.GetInstance().Id, null);
+                API.APIHandler.StoreRanking(ranking);
+            }
+            //API.APIHandler.AddRanking(AuthenticatedUser.GetInstance().Id, context.Points);
         }
 
         public void KeyDown(Key key)

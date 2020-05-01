@@ -26,15 +26,6 @@ namespace BriqueArcASP.Controllers
             return await _context.Rankings.OrderByDescending(r => r.Score).ToListAsync();
         }
 
-        [HttpGet("add/{id}/{score}")]
-        public async Task<ActionResult<Ranking>> AddRanking(long id, int score)
-        {
-            Ranking ranking = new Ranking();
-            ranking.UserID = id;
-            ranking.Score = score;
-
-            return await PostRanking(ranking);
-        }
 
         // GET: api/Rankings
         [HttpGet]

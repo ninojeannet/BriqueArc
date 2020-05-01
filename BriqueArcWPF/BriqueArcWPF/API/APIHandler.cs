@@ -56,10 +56,6 @@ namespace BriqueArcWPF.API
             return  JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
-        public static void RegisterUser(String username, String password)
-        {
-            Send(urlUser + "/register/" + username + "/" + Encode(password));
-        }
 
         public static List<Ranking> GetScoreboard()
         {
@@ -86,10 +82,6 @@ namespace BriqueArcWPF.API
             return JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
-        public static void AddRanking(int userId, int score)
-        {
-            Send(urlRanking + "/add/" + userId + "/" + score);
-        }
 
         public static List<Ranking> FetchRankings()
         {
