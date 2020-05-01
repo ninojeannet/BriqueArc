@@ -30,7 +30,7 @@ namespace BriqueArcWPF.API
             return response.GetResponseStream();
         }
 
-        private static String Encode(String str)
+        public static String Encode(String str)
         {
             ASCIIEncoding encoder = new ASCIIEncoding();
             SHA256Managed hash = new SHA256Managed();
@@ -131,6 +131,7 @@ namespace BriqueArcWPF.API
 
         public static bool StoreUser(User user)
         {
+            user.setPassword(Encode(user.getPassword()));
             string body = user.ToJSONFormat();
 
             var client = new RestClient(urlUser);
