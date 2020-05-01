@@ -30,7 +30,7 @@ namespace BriqueArcWPF.API
             return response.GetResponseStream();
         }
 
-        private static String Encode(String str)
+        public static String Encode(String str)
         {
             ASCIIEncoding encoder = new ASCIIEncoding();
             SHA256Managed hash = new SHA256Managed();
@@ -56,10 +56,6 @@ namespace BriqueArcWPF.API
             return  JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
-        public static void RegisterUser(String username, String password)
-        {
-            Send(urlUser + "/register/" + username + "/" + Encode(password));
-        }
 
         public static List<Ranking> GetScoreboard()
         {
@@ -86,10 +82,6 @@ namespace BriqueArcWPF.API
             return JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
-        public static void AddRanking(int userId, int score)
-        {
-            Send(urlRanking + "/add/" + userId + "/" + score);
-        }
 
         public static List<Ranking> FetchRankings()
         {
@@ -131,6 +123,7 @@ namespace BriqueArcWPF.API
 
         public static bool StoreUser(User user)
         {
+            user.setPassword(Encode(user.getPassword()));
             string body = user.ToJSONFormat();
 
             var client = new RestClient(urlUser);

@@ -27,10 +27,9 @@ namespace BriqueArcASP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<BriqueArcContext>(options =>
-            //    options.UseSqlServer("Data Source=tcp:briquearcaspdbserver.database.windows.net,1433;Initial Catalog=BriqueArcASP_db;User Id=myadmin@briquearcaspdbserver;Password=admin$1234"));
             services.AddDbContext<BriqueArcContext>(options =>
-                  options.UseSqlServer(Configuration.GetConnectionString("BriqueArcContext")));
+                options.UseSqlServer("Data Source=tcp:briquearcaspdbserver.database.windows.net,1433;Initial Catalog=BriqueArcASP_db;User Id=myadmin@briquearcaspdbserver;Password=admin$1234"));
+
 
             services.AddControllers();
         }

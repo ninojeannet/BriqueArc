@@ -15,6 +15,7 @@ namespace BriqueArcWPF.API.Models
         private string password;
         private ICollection<Ranking> rankings;
 
+
         public User() { }
 
         public User(string username, string password)
@@ -45,6 +46,11 @@ namespace BriqueArcWPF.API.Models
         public string getPassword()
         {
             return password;
+        }
+
+        public void setPassword(string password)
+        {
+            this.password = password;
         }
 
         public override string ToString()

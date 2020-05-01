@@ -42,15 +42,6 @@ namespace BriqueArcASP.Controllers
             return await _context.Users.Where(s => s.Username == username && s.Password == password).FirstOrDefaultAsync();
         }
 
-        [HttpGet("register/{username}/{password}")]
-        public async void RegisterUser(String username, String password)
-        {
-            User user = new User();
-            user.Username = username;
-            user.Password = password;
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-        }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
@@ -104,10 +95,6 @@ namespace BriqueArcASP.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            var md5 = new MD5CryptoServiceProvider();
-
-            //return as base64 string
-            user.Password =  Convert.ToBase64String(md5.ComputeHash(Encoding.Unicode.GetBytes(user.Password)));
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using BriqueArcWPF.API.Models;
+using BriqueArcWPF.APIHandler;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace BriqueArcWPF.UserControls
@@ -17,7 +19,8 @@ namespace BriqueArcWPF.UserControls
         {
             if (CheckPasswords() && CheckUsername())
             {
-                API.APIHandler.RegisterUser(username.Text, password.Password);
+                User user = new User(username.Text,password.Password);
+                API.APIHandler.StoreUser(user);
                 SetLoginControl();
                 error.Visibility = Visibility.Hidden;
             }
