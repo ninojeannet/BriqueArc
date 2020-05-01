@@ -43,13 +43,13 @@ namespace BriqueArcASP.Controllers
         }
 
         [HttpGet("register/{username}/{password}")]
-        public async void RegisterUser(String username, String password)
+        public async Task<ActionResult<int>> RegisterUser(String username, String password)
         {
             User user = new User();
             user.Username = username;
             user.Password = password;
             _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
         }
 
         // GET: api/Users/5
