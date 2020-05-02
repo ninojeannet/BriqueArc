@@ -5,8 +5,15 @@ using System.Windows;
 
 namespace BriqueArcWPF.Game.Utils
 {
+    /// <summary>
+    /// Classe de gestion des collisions
+    /// </summary>
     class CollisionManager
     {
+        /// <summary>
+        /// Vérfie la collision entre la bar et la bordure
+        /// </summary>
+        /// <param name="game">Le modèle de la partie en cours</param>
         public static void CheckBarBorderCollision(Models.Game game)
         {
             Bar bar = game.Bar;
@@ -22,6 +29,10 @@ namespace BriqueArcWPF.Game.Utils
             }
         }
 
+        /// <summary>
+        /// Vérifie la collision entre la balle et la bordure
+        /// </summary>
+        /// <param name="game">Le modèle de la partie en cours</param>
         public static void CheckBallBorderCollision(Models.Game game)
         {
             Ball ball = game.Ball;
@@ -31,6 +42,10 @@ namespace BriqueArcWPF.Game.Utils
                 ball.SetDirection(ball.Direction.X * -1, ball.Direction.Y);
         }
 
+        /// <summary>
+        /// Vérifie la collision entre la balle et la barre
+        /// </summary>
+        /// <param name="game">Le modèle de la partie en cours</param>
         public static void CheckBallBarCollision(Models.Game game)
         {
             Ball ball = game.Ball;
@@ -48,6 +63,10 @@ namespace BriqueArcWPF.Game.Utils
             }
         }
 
+        /// <summary>
+        /// Vérifie la collision entre la balle et les briques
+        /// </summary>
+        /// <param name="game">Le modèle de la partie en cours</param>
         public static void CheckBallBricksCollision(Models.Game game)
         {
             Ball ball = game.Ball;
@@ -74,6 +93,10 @@ namespace BriqueArcWPF.Game.Utils
             }
         }
 
+        /// <summary>
+        /// Vérifie toutes les collisions
+        /// </summary>
+        /// <param name="game"></param>
         public static void CheckAllCollision(Models.Game game)
         {
             CheckBallBarCollision(game);

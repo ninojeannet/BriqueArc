@@ -8,6 +8,9 @@ using System.Windows.Input;
 
 namespace BriqueArcWPF.Game.Models
 {
+    /// <summary>
+    /// Modèle du jeu
+    /// </summary>
     class Game
     {
         private Size size;
@@ -17,6 +20,9 @@ namespace BriqueArcWPF.Game.Models
         private GameState_I state;
         private int points;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public Game()
         {
             size = new Size(500, 500);
@@ -26,6 +32,9 @@ namespace BriqueArcWPF.Game.Models
             points = 0;
         }
 
+        /// <summary>
+        /// Score actuel
+        /// </summary>
         public int Points
         {
             get { return points; }
@@ -36,11 +45,17 @@ namespace BriqueArcWPF.Game.Models
             }
         }
 
+        /// <summary>
+        /// Vue de la balle
+        /// </summary>
         public Views.Ball Ball
         {
             get { return this.ball; }
         }
 
+        /// <summary>
+        /// Vue de la barre
+        /// </summary>
         public Views.Bar Bar
         {
             get { return this.bar; }
@@ -52,37 +67,62 @@ namespace BriqueArcWPF.Game.Models
             set { this.bricks = value; }
         }
 
+        /// <summary>
+        /// Vues des briques
+        /// </summary>
         public Size Size
         {
             get { return this.size; }
         }
 
+        /// <summary>
+        /// Etat actuel de la partie
+        /// </summary>
         public GameState_I State
         {
             set { state = value; }
         }
 
+        /// <summary>
+        /// Met à jour la partie
+        /// </summary>
         public void Update()
         {
             bar.Focus();
             state.Update();
         }
 
+        /// <summary>
+        /// Touche enfoncée
+        /// </summary>
+        /// <param name="key">La touche</param>
         public void KeyDown(Key key)
         {
             state.KeyDown(key);
         }
 
+        /// <summary>
+        /// Touche lâchée
+        /// </summary>
+        /// <param name="key">La touche</param>
         public void KeyUp(Key key)
         {
             state.KeyUp(key);
         }
 
+        /// <summary>
+        /// Met à jour l'interface graphique
+        /// </summary>
         public void Refresh()
         {
             ChangeSize(size.Width, size.Height);
         }
 
+        /// <summary>
+        /// Modifie la taille des éléments
+        /// </summary>
+        /// <param name="width">La nouvelle largeur</param>
+        /// <param name="height">La nouvelle hauteur</param>
         public void ChangeSize(double width, double height)
         {
             double widthDiff = width / size.Width;
@@ -124,6 +164,11 @@ namespace BriqueArcWPF.Game.Models
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Lève l'évènement PropertyChanged
+        /// </summary>
+        /// <param name="name"></param>
         private void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

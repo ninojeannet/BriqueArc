@@ -10,11 +10,17 @@ namespace BriqueArcWPF.UserControls
     /// </summary>
     public partial class RegisterControl : UserControl
     {
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public RegisterControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Créer un compte
+        /// </summary>
         private void Register()
         {
             if (CheckPasswords() && CheckUsername())
@@ -26,6 +32,10 @@ namespace BriqueArcWPF.UserControls
             }
         }
 
+        /// <summary>
+        /// Vérifie que les mots de passes soient les mêmes et pas vide
+        /// </summary>
+        /// <returns>Le résultat</returns>
         private bool CheckPasswords()
         {
 
@@ -44,10 +54,12 @@ namespace BriqueArcWPF.UserControls
             }
              
             return true;
-
-            
         }
 
+        /// <summary>
+        /// Vérifie que le nom de compte n'existe pas déjà
+        /// </summary>
+        /// <returns>Le résultat</returns>
         private bool CheckUsername()
         {
             if (!API.APIHandler.UsernameAlreadyExists(username.Text))
@@ -58,17 +70,30 @@ namespace BriqueArcWPF.UserControls
             return false;
         }
 
+        /// <summary>
+        /// Modifie le control actuel pour le control de login
+        /// </summary>
         private void SetLoginControl()
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.SetControl(MainWindow.Controls.Login);
         }
 
+        /// <summary>
+        /// Evenement Click du bouton de création de compte
+        /// </summary>
+        /// <param name="sender">L'envoyeur</param>
+        /// <param name="e">Les arguments</param>
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             Register();
         }
 
+        /// <summary>
+        /// Evenement Click du bouton retour
+        /// </summary>
+        /// <param name="sender">L'envoyeur</param>
+        /// <param name="e">Les arguments</param>
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             SetLoginControl();

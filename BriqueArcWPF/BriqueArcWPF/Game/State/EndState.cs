@@ -11,6 +11,10 @@ namespace BriqueArcWPF.Game.State
     {
         private Models.Game context;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="context">Le modèle du jeu</param>
         public EndState(Models.Game context)
         {
             this.context = context;
@@ -22,19 +26,29 @@ namespace BriqueArcWPF.Game.State
                 Ranking ranking = new Ranking(context.Points, AuthenticatedUser.GetInstance().Id, null);
                 API.APIHandler.StoreRanking(ranking);
             }
-            //API.APIHandler.AddRanking(AuthenticatedUser.GetInstance().Id, context.Points);
         }
 
+        /// <summary>
+        /// Touche enfoncée
+        /// </summary>
+        /// <param name="key">La touche</param>
         public void KeyDown(Key key)
         {
             //Rien
         }
 
+        /// <summary>
+        /// Touche lachée
+        /// </summary>
+        /// <param name="key">La touche</param>
         public void KeyUp(Key key)
         {
             //Rien
         }
 
+        /// <summary>
+        /// Met à jour
+        /// </summary>
         public void Update()
         {
             BrickCreator.ResetSchemeCounter();

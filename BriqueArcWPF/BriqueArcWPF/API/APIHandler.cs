@@ -13,6 +13,9 @@ using System.Windows;
 
 namespace BriqueArcWPF.API
 {
+    /// <summary>
+    /// Classe de liaison avec l'API
+    /// </summary>
     class APIHandler
     {
         private static string urlUser = "https://briquearcasp.azurewebsites.net/api/users";
@@ -21,6 +24,11 @@ namespace BriqueArcWPF.API
         //private static string urlUser = "https://localhost:44384/api/users";
         //private static string urlRanking = "https://localhost:44384/api/rankings";
 
+        /// <summary>
+        /// "Envoie" un URI spécifique par méthode GET
+        /// </summary>
+        /// <param name="uriString">URI en format String</param>
+        /// <returns>Le stream de réponse de l'API</returns>
         private static Stream Send(String uriString)
         { 
             Uri uri = new Uri(uriString);
@@ -30,6 +38,11 @@ namespace BriqueArcWPF.API
             return response.GetResponseStream();
         }
 
+        /// <summary>
+        /// Encode en SHA256 un String
+        /// </summary>
+        /// <param name="str">La chaîne de charactère à encoder</param>
+        /// <returns>Le hash en hexadécimale</returns>
         public static String Encode(String str)
         {
             ASCIIEncoding encoder = new ASCIIEncoding();
@@ -42,6 +55,11 @@ namespace BriqueArcWPF.API
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Demande à l'API si le nom de compte existe déjà
+        /// </summary>
+        /// <param name="username">Le nom de compte</param>
+        /// <returns>Le nom de compte existe ?</returns>
         public static bool UsernameAlreadyExists(String username)
         {
             Stream receivedStream = Send(urlUser + "/exists/" + username);
@@ -49,6 +67,12 @@ namespace BriqueArcWPF.API
             return JsonConvert.DeserializeObject<bool>(streamReader.ReadToEnd());
         }
 
+        /// <summary>
+        /// Demande à l'API une connexion
+        /// </summary>
+        /// <param name="username">Le nom de compte</param>
+        /// <param name="password">Le mot de passe</param>
+        /// <returns>L'utilisateur correspondant au couple nom de compte et mot de passe</returns>
         public static User ConnectUser(String username, String password)
         {
             Stream receivedStream = Send(urlUser + "/connect/" + username + "/" + Encode(password));
@@ -56,7 +80,10 @@ namespace BriqueArcWPF.API
             return  JsonConvert.DeserializeObject<User>(streamReader.ReadToEnd());
         }
 
-
+        /// <summary>
+        /// Demande à l'API la liste des score triée
+        /// </summary>
+        /// <returns>La liste des scores triée</returns>
         public static List<Ranking> GetScoreboard()
         {
             Stream receivedStream = Send(urlRanking + "/scoreboard");
@@ -75,6 +102,11 @@ namespace BriqueArcWPF.API
             return rankings;
         }
 
+        /// <summary>
+        /// Demande à l'API un utilisateur spécifique
+        /// </summary>
+        /// <param name="id">L'idientifiant de l'utilisateur</param>
+        /// <returns>L'utilisateur recherché</returns>
         private static User GetUser(int id)
         {
             Stream receivedStream = Send(urlUser + "/" + id);
@@ -106,6 +138,11 @@ namespace BriqueArcWPF.API
             return rankings;
         }
 
+        /// <summary>
+        /// Envoie un score à ajouter avec la méthode POST
+        /// </summary>
+        /// <param name="ranking">Le score à envoyé</param>
+        /// <returns>False</returns>
         public static bool StoreRanking(Ranking ranking)
         {
             string body = ranking.ToJSONFormat();
@@ -121,6 +158,11 @@ namespace BriqueArcWPF.API
             return false;
         }
 
+        /// <summary>
+        /// Envoie un utilisatur à ajouter avec la méthode POST
+        /// </summary>
+        /// <param name="user">L'utilisateur à ajouter</param>
+        /// <returns>False</returns>
         public static bool StoreUser(User user)
         {
             user.setPassword(Encode(user.getPassword()));

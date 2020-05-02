@@ -24,11 +24,19 @@ namespace BriqueArcWPF.UserControls
     /// </summary>
     public partial class GameControl : UserControl
     {
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public GameControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Evenement Loaded
+        /// </summary>
+        /// <param name="sender">L'envoyeur</param>
+        /// <param name="e">Les arguments</param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             game.Model.PropertyChanged += new PropertyChangedEventHandler(Game_PropertyChanged);
@@ -36,6 +44,11 @@ namespace BriqueArcWPF.UserControls
             UpdateScoreboard();
         }
 
+        /// <summary>
+        /// Evenement PropertyChanged du modèle du jeu
+        /// </summary>
+        /// <param name="sender">L'envoyeur</param>
+        /// <param name="args">Les arguments</param>
         private void Game_PropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             score.Content = "Score : " + game.Model.Points + "pts";
@@ -44,6 +57,9 @@ namespace BriqueArcWPF.UserControls
                 UpdateScoreboard();
         }
 
+        /// <summary>
+        /// Met à jour le tableau des scores
+        /// </summary>
         private void UpdateScoreboard()
         {
             scoreboard.Items.Clear();

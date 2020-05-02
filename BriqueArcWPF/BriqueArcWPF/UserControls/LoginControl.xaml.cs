@@ -11,11 +11,17 @@ namespace BriqueArcWPF.UserControls
     /// </summary>
     public partial class LoginControl : UserControl
     {
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public LoginControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Connecte un utilisateur
+        /// </summary>
         private void Login()
         {
             User user = API.APIHandler.ConnectUser(username.Text, password.Password);
@@ -32,11 +38,21 @@ namespace BriqueArcWPF.UserControls
             }
         }
 
+        /// <summary>
+        /// Evenement Click du bouton de login
+        /// </summary>
+        /// <param name="sender">L'envoyeur</param>
+        /// <param name="e">Les arguments</param>
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             Login();
         }
 
+        /// <summary>
+        /// Evenement Click du bouton de création de compte
+        /// </summary>
+        /// <param name="sender">L'envoyeur</param>
+        /// <param name="e">Les arguments</param>
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);

@@ -11,11 +11,17 @@ using System.Windows.Threading;
 
 namespace BriqueArcWPF.Game.Views
 {
+    /// <summary>
+    /// Vue du jeu
+    /// </summary>
     class Game : Canvas
     {
         private Models.Game model;
         private DispatcherTimer timer;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public Game()
         {
             model = new Models.Game();
@@ -28,6 +34,9 @@ namespace BriqueArcWPF.Game.Views
             timer.Start();
         }
 
+        /// <summary>
+        /// Enregistre les envents de l'objet
+        /// </summary>
         private void RegisterEvents()
         {
             this.KeyDown += new KeyEventHandler(Game_KeyDown);
@@ -36,6 +45,11 @@ namespace BriqueArcWPF.Game.Views
             this.timer.Tick += new EventHandler(Game_Update);
         }
 
+        /// <summary>
+        /// Evenement tick du timer
+        /// </summary>
+        /// <param name="sender">L'envoyeur</param>
+        /// <param name="args">Les arguments</param>
         private void Game_Update(object sender, EventArgs args)
         {
             model.Update();
@@ -50,21 +64,39 @@ namespace BriqueArcWPF.Game.Views
             }
         }
 
+        /// <summary>
+        /// Le modèle du jeu
+        /// </summary>
         public Models.Game Model
         {
             get { return model; }
         }
 
+        /// <summary>
+        /// Evénement KeyDown
+        /// </summary>
+        /// <param name="sender">l'envoyeur</param>
+        /// <param name="args">Les arguments</param>
         private void Game_KeyDown(object sender, KeyEventArgs args)
         {
             model.KeyDown(args.Key);
         }
 
+        /// <summary>
+        /// Evénement KeyUp
+        /// </summary>
+        /// <param name="sender">l'envoyeur</param>
+        /// <param name="args">Les arguments</param>
         private void Game_KeyUp(object sender, KeyEventArgs args)
         {
             model.KeyUp(args.Key);
         }
 
+        /// <summary>
+        /// Evénement ChangeSize
+        /// </summary>
+        /// <param name="sender">l'envoyeur</param>
+        /// <param name="args">Les arguments</param>
         private void Game_SizeChanged(object sender, SizeChangedEventArgs args)
         {
             model.ChangeSize(args.NewSize.Width, args.NewSize.Height);

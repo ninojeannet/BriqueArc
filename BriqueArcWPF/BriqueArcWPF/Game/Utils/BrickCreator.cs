@@ -10,11 +10,19 @@ using System.Windows.Media;
 
 namespace BriqueArcWPF.Game.Utils
 { 
+
+    /// <summary>
+    /// Classe permettant de construire les différent schéma de briques
+    /// </summary>
     class BrickCreator
     {
         private static Brush[] brushes = new Brush[] { Brushes.DarkBlue, Brushes.Purple, Brushes.Red, Brushes.Orange, Brushes.Yellow, Brushes.Lime, Brushes.SkyBlue };
         private static int schemaNumber = 0;
 
+        /// <summary>
+        /// Demande le schéma de brique du prochain niveau
+        /// </summary>
+        /// <returns>Le prochain schéma</returns>
         public static List<Brick> NextSchema()
         {
             List<Brick> bricks = new List<Brick>();
@@ -37,11 +45,18 @@ namespace BriqueArcWPF.Game.Utils
             return bricks;
         }
 
+        /// <summary>
+        /// Reset au premier niveau
+        /// </summary>
         public static void ResetSchemeCounter()
         {
             schemaNumber = 0;
         }
 
+        /// <summary>
+        /// Construit le schéma "Bloc"
+        /// </summary>
+        /// <returns>Le schéma bloc</returns>
         public static List<Brick> SchemaBlock()
         {
             List<Brick> bricks = new List<Brick>();
@@ -53,6 +68,10 @@ namespace BriqueArcWPF.Game.Utils
             return bricks;
         }
 
+        /// <summary>
+        /// Construit le schéma "Un sur deux"
+        /// </summary>
+        /// <returns>Le schéma un sur deux</returns>
         public static List<Brick> SchemaOneOnTwo()
         {
             List<Brick> bricks = new List<Brick>();
@@ -65,6 +84,10 @@ namespace BriqueArcWPF.Game.Utils
             return bricks;
         }
 
+        /// <summary>
+        /// Construit le schéma "Flèche"
+        /// </summary>
+        /// <returns>Le schéma flèche</returns>
         public static List<Brick> SchemaArrow()
         {
             List<Brick> bricks = new List<Brick>();
@@ -84,6 +107,12 @@ namespace BriqueArcWPF.Game.Utils
             return bricks;
         }
 
+        /// <summary>
+        /// Construit une brique
+        /// </summary>
+        /// <param name="x">La position X</param>
+        /// <param name="y">La position Y</param>
+        /// <returns>La brique</returns>
         private static Brick CreateBrick(int x, int y)
         {
 

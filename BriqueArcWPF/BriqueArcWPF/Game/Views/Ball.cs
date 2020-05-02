@@ -8,8 +8,14 @@ using System.Windows.Controls;
 
 namespace BriqueArcWPF.Game.Views
 {
+    /// <summary>
+    /// Vue d'une balle
+    /// </summary>
     class Ball : GameObject
     {
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public Ball() : base(new Models.Ball())
         {
             this.SetSize(5, 5);

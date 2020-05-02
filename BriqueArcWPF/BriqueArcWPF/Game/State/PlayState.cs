@@ -12,6 +12,10 @@ namespace BriqueArcWPF.Game.State
         private Views.Bar bar;
         private List<Views.Brick> bricks;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="context">Le modèle du jeu</param>
         public PlayState(Models.Game context)
         {
             this.context = context;
@@ -22,6 +26,10 @@ namespace BriqueArcWPF.Game.State
             ball.SetDirection(0, context.Size.Height / 100);
         }
 
+        //// <summary>
+        /// Touche enfoncée
+        /// </summary>
+        /// <param name="key">La touche</param>
         public void KeyDown(Key key)
         {
             switch (key)
@@ -36,11 +44,18 @@ namespace BriqueArcWPF.Game.State
             }
         }
 
+        /// <summary>
+        /// Touche lachée
+        /// </summary>
+        /// <param name="key">La touche</param>
         public void KeyUp(Key key)
         {
             bar.SetDirection(0, 0);
         }
 
+        /// <summary>
+        /// Met à jour
+        /// </summary>
         public void Update()
         {
             ball.Update();

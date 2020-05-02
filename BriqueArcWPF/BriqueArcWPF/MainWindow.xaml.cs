@@ -10,12 +10,18 @@ namespace BriqueArcWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Controles possible de la fenètre
+        /// </summary>
         public enum Controls { Login, Register, Game}
 
         private LoginControl loginControl;
         private RegisterControl registerControl;
         private GameControl gameControl;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +33,10 @@ namespace BriqueArcWPF
             SetControl(Controls.Login);
         }
 
+        /// <summary>
+        /// Modifie le control actuel
+        /// </summary>
+        /// <param name="control">Le nouveau control</param>
         public void SetControl(Controls control)
         {
             grid.Children.Clear();
