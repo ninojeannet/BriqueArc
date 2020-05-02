@@ -12,38 +12,62 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace BriqueArcASP.Controllers
 {
+    /// <summary>
+    /// Controleur pour tout ce qui concerne les utilisateurs
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
         private readonly BriqueArcContext _context;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="context">Contexte de l'API</param>
         public UsersController(BriqueArcContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        /// <summary>
+        /// Demande la liste de tous les utilisateurs
+        /// </summary>
+        /// <returns>La liste de tout les utilisateur</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
         }
 
+        /// <summary>
+        /// Demande si un utilisateur utilise déjà un nom d'utilisateur
+        /// </summary>
+        /// <param name="username">Le nom d'utilisateurà vérifier</param>
+        /// <returns>Le nom de compte existe ?</returns>
         [HttpGet("exists/{username}")]
         public async Task<ActionResult<bool>> UsernameAlreadyExist(String username)
         {
             return await _context.Users.Where(s => s.Username == username).CountAsync() > 0;
         }
 
+        /// <summary>
+        /// Essaye de connecter un utilisateur avec un couple nom de compte et mot de passe
+        /// </summary>
+        /// <param name="username">Le nom de compte</param>
+        /// <param name="password">Le mot de passe</param>
+        /// <returns>L'utilisateur correspondant au nom de compte et au mot de passe</returns>
         [HttpGet("connect/{username}/{password}")]
         public async Task<ActionResult<User>> ConnectUser(String username, String password)
         {
             return await _context.Users.Where(s => s.Username == username && s.Password == password).FirstOrDefaultAsync();
         }
 
-
-        // GET: api/Users/5
+        /// <summary>
+        /// Recherche un utilisateur en fonction de son identifiant
+        /// </summary>
+        /// <param name="id">L'identifiant</param>
+        /// <returns>L'utilisateur ayant l'identifiant</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
         {
@@ -57,9 +81,12 @@ namespace BriqueArcASP.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        /// <summary>
+        /// Enregistre un utilisateur à l'aide de la méhode PUT
+        /// </summary>
+        /// <param name="id">L'identifiant</param>
+        /// <param name="user">L'utilisateur</param>
+        /// <returns>Rien</returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(long id, User user)
         {
@@ -89,9 +116,11 @@ namespace BriqueArcASP.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
+        /// <summary>
+        /// Enregistre un utilisateur en passant par la méthode POST
+        /// </summary>
+        /// <param name="user">L'utilisateur à enregistrer</param>
+        /// <returns>L'utilisateur enregistré</returns>
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
@@ -102,7 +131,11 @@ namespace BriqueArcASP.Controllers
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
-        // DELETE: api/Users/5
+        /// <summary>
+        /// Supprime un utilisateur ayant l'identifiant passé en paramètre
+        /// </summary>
+        /// <param name="id">L'identifiant de l'utilisateur à supprimer</param>
+        /// <returns>L'utilisateur supprimé</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(long id)
         {
