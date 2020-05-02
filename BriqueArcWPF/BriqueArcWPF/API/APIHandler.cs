@@ -18,8 +18,8 @@ namespace BriqueArcWPF.API
     /// </summary>
     class APIHandler
     {
-        private static string urlUser = "https://briquearcasp.azurewebsites.net/api/users";
-        private static string urlRanking = "https://briquearcasp.azurewebsites.net/api/rankings";
+        private static readonly string urlUser = "https://briquearcasp.azurewebsites.net/api/users";
+        private static readonly string urlRanking = "https://briquearcasp.azurewebsites.net/api/rankings";
 
         //private static string urlUser = "https://localhost:44384/api/users";
         //private static string urlRanking = "https://localhost:44384/api/rankings";
@@ -165,7 +165,7 @@ namespace BriqueArcWPF.API
         /// <returns>False</returns>
         public static bool StoreUser(User user)
         {
-            user.setPassword(Encode(user.getPassword()));
+            user.Password = Encode(user.Password);
             string body = user.ToJSONFormat();
 
             var client = new RestClient(urlUser);

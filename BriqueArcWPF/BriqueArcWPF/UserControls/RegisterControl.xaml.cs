@@ -84,7 +84,7 @@ namespace BriqueArcWPF.UserControls
         /// </summary>
         /// <param name="sender">L'envoyeur</param>
         /// <param name="e">Les arguments</param>
-        private void registerButton_Click(object sender, RoutedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             Register();
         }
@@ -94,7 +94,7 @@ namespace BriqueArcWPF.UserControls
         /// </summary>
         /// <param name="sender">L'envoyeur</param>
         /// <param name="e">Les arguments</param>
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             SetLoginControl();
         }

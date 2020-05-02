@@ -15,7 +15,7 @@ namespace BriqueArcWPF.Game.Models
         /// <summary>
         /// Constructeur
         /// </summary>
-        public Bar() : base("Bar")
+        public Bar() : base()
         {
 
         }

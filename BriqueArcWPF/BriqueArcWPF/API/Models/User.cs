@@ -48,39 +48,28 @@ namespace BriqueArcWPF.API.Models
         }
 
         /// <summary>
-        /// Retourne l'identifiant de l'utilisateur
+        /// Identifiant
         /// </summary>
-        /// <returns>L'identifiant</returns>
-        public int getId()
+        public int Id
         {
-            return userId;
+            get { return userId; }
         }
 
         /// <summary>
-        /// Retourne le nom de compte
+        /// Nom de compte
         /// </summary>
-        /// <returns>Le nom de compte</returns>
-        public string getUsername()
+        public string Username
         {
-            return username;
+            get { return username; }
         }
 
         /// <summary>
-        /// Retourne le mot de passe
+        /// Mot de passe
         /// </summary>
-        /// <returns>Le mto de </returns>
-        public string getPassword()
+        public string Password
         {
-            return password;
-        }
-
-        /// <summary>
-        /// Modifie le mot de passe
-        /// </summary>
-        /// <param name="password">Le nouveau mot de passe</param>
-        public void setPassword(string password)
-        {
-            this.password = password;
+            get { return password; }
+            set { password = value; }
         }
 
         public override string ToString()

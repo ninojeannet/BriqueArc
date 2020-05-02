@@ -17,7 +17,7 @@ namespace BriqueArcWPF.Game.Models
         /// <summary>
         /// Constructeur
         /// </summary>
-        public Ball() : base("Ball")
+        public Ball() : base()
         {
             attack = 1;
         }

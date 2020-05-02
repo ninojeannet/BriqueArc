@@ -17,7 +17,7 @@ namespace BriqueArcWPF.Game.Models
         /// Constructeur
         /// </summary>
         /// <param name="life">Point de vie de la brique</param>
-        public Brick(int life = 1) : base("Brick")
+        public Brick(int life = 1) : base()
         {
             this.life = life;
         }

@@ -43,7 +43,7 @@ namespace BriqueArcWPF.UserControls
         /// </summary>
         /// <param name="sender">L'envoyeur</param>
         /// <param name="e">Les arguments</param>
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             Login();
         }
@@ -53,7 +53,7 @@ namespace BriqueArcWPF.UserControls
         /// </summary>
         /// <param name="sender">L'envoyeur</param>
         /// <param name="e">Les arguments</param>
-        private void registerButton_Click(object sender, RoutedEventArgs e)
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)Window.GetWindow(this);
             mainWindow.SetControl(MainWindow.Controls.Register);

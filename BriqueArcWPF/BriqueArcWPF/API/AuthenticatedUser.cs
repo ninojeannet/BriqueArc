@@ -58,7 +58,7 @@ namespace BriqueArcWPF.API
         /// </summary>
         public int Id
         {
-            get { return user.getId(); }
+            get { return user.Id; }
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace BriqueArcWPF.API
         /// </summary>
         public String Username
         {
-            get { return user.getUsername(); }
+            get { return user.Username; }
         }
     }
 }

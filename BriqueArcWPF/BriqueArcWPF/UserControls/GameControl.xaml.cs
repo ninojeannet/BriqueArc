@@ -64,7 +64,7 @@ namespace BriqueArcWPF.UserControls
         {
             scoreboard.Items.Clear();
             foreach (Ranking ranking in API.APIHandler.GetScoreboard())
-                scoreboard.Items.Add(ranking.User.getUsername() + " : " + ranking.Score + "pts");
+                scoreboard.Items.Add(ranking.User.Username + " : " + ranking.Score + "pts");
         }
     }
 }

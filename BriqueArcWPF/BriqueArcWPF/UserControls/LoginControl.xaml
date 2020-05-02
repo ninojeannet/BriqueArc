@@ -29,8 +29,8 @@
             <Label Foreground="White" Content="{StaticResource password}" />
             <PasswordBox Name="password"/>
 
-            <Button x:Name="loginButton" Margin="0,20,0,0" Click="loginButton_Click" Content="{StaticResource connection}" />
-            <Button x:Name="registerButton" Margin="0,5,0,0" Click="registerButton_Click" Content="{StaticResource register}" />
+            <Button x:Name="loginButton" Margin="0,20,0,0" Click="LoginButton_Click" Content="{StaticResource connection}" />
+            <Button x:Name="registerButton" Margin="0,5,0,0" Click="RegisterButton_Click" Content="{StaticResource register}" />
         </StackPanel>
     </StackPanel>
 </UserControl>
