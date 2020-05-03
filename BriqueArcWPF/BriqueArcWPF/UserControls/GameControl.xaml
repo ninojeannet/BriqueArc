@@ -7,12 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <UserControl.Background>
-        <ImageBrush ImageSource="..\Ressources\background.jpg"/>
+        <ImageBrush ImageSource="pack://application:,,,/resources/background.jpg"/>
     </UserControl.Background>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Dictionaries/StringDictionary.xaml" />
+                <ResourceDictionary Source="/Dictionaries/StringDictionary.xaml" />
+                <ResourceDictionary Source="/Dictionaries/ImageDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -45,10 +46,11 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Image Source="..\Ressources/UpArrow.png" Grid.Row="0" Grid.Column="0"/>
+                <Image Source="pack://application:,,,/resources/UpArrow.png" Grid.Row="0" Grid.Column="0"/>
                 <TextBlock Grid.Row="0" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center" Text="{StaticResource throwBall}" />
-                <Image Source="..\Ressources/LeftArrow.png" Grid.Row="1" Grid.Column="0"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center" Text="{StaticResource moveLeft}" />             <Image Source="..\Ressources/RightArrow.png" Grid.Row="2" Grid.Column="0"/>
+                <Image Source="pack://application:,,,/resources/LeftArrow.png" Grid.Row="1" Grid.Column="0"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center" Text="{StaticResource moveLeft}" />
+                <Image Source="pack://application:,,,/resources/RightArrow.png" Grid.Row="2" Grid.Column="0"/>
                 <TextBlock Grid.Row="2" Grid.Column="1" Foreground="White" FontFamily="Showcard Gothic" VerticalAlignment="Center" Text="{StaticResource moveRight}" />
             </Grid>
         </StackPanel>

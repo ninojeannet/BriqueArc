@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BriqueArcWPF.Dictionaries">
+    <BitmapImage x:Key="background" UriSource="/Resources/background.jpg" />
+    <BitmapImage x:Key="upArrow" UriSource="../Resources/UpArrow.png" />
+    <BitmapImage x:Key="leftArrow" UriSource="../Resources/LeftArrow.png" />
+    <BitmapImage x:Key="rigthArrow" UriSource="../Resources/RightArrow.pngg" />
+</ResourceDictionary>

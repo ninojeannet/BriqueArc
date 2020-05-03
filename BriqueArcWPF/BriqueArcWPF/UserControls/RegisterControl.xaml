@@ -7,12 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Background>
-        <ImageBrush ImageSource="..\Ressources\background.jpg" />
+        <ImageBrush ImageSource="pack://application:,,,/resources/background.jpg" />
     </UserControl.Background>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Dictionaries/StringDictionary.xaml" />
+                <ResourceDictionary Source="/Dictionaries/StringDictionary.xaml" />
+                <ResourceDictionary Source="/Dictionaries/ImageDictionary.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
